@@ -1,0 +1,82 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Trabalho_Quiz_Cadastro extends JFrame {
+	/*
+	 
+	 by: Cauan de Paula, Gustavo Candido e Heleno Matos - 4SIT
+	
+	 */
+	Trabalho_Quiz_Cadastro frame;
+	private static Container ctela;
+	private JLabel lbnome, lbtitulo;
+	private JTextField tfnome;
+	private static JButton btenviar;
+	private JPanel panel1;
+
+	public Trabalho_Quiz_Cadastro() {
+		inicializarComponentes();
+		definirEventos();
+	}
+	
+	public void inicializarComponentes() {
+		ctela = getContentPane();
+		
+		panel1 = new JPanel((null));
+		
+		panel1.setBackground(Color.black);
+		lbtitulo = new JLabel("QUIZ - Conhecimentos Gerais");
+		lbnome = new JLabel("Nome:");
+		tfnome = new JTextField();	
+		btenviar = new JButton("Cadastrar");
+		
+		lbtitulo.setBounds(95, 10, 500, 20);
+	    lbnome.setBounds(30, 30, 100, 20);
+		tfnome.setBounds(90, 31, 220, 20);
+		btenviar.setBounds(140, 65, 91, 25);
+		
+		btenviar.setBackground(Color.white);
+		lbnome.setFont(new Font("Arial", Font.BOLD, 14));
+		lbnome.setForeground(Color.white);
+		
+		lbtitulo.setFont(new Font("Arial", Font.BOLD, 14));
+		lbtitulo.setForeground(Color.white);
+		
+		panel1.add(lbtitulo);
+		panel1.add(lbnome);
+		panel1.add(tfnome);
+		panel1.add(btenviar);
+		panel1.setBounds(450,200,468,390);
+		add(panel1);
+	}
+	
+	public void definirEventos() {
+		btenviar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lbnome.setVisible(true);
+				lbnome.setText(tfnome.getText());
+				}
+			});
+	}
+	
+	public static void main(String args[]) {
+		Trabalho_Quiz_Cadastro frame = new Trabalho_Quiz_Cadastro();
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(450,300,400,150);
+		frame.setVisible(true);
+		frame.setTitle("Quiz CGH ");
+		
+		 btenviar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Trabalho_Quiz2 t2 = new Trabalho_Quiz2();
+				ctela.removeAll();
+				frame.setBounds(450, 30, 545, 590);
+				ctela.add(t2);
+				ctela.validate();
+				}
+			});
+	}
+}
+
